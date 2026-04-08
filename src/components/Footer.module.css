@@ -1,0 +1,45 @@
+.footer {
+  background: var(--text-primary);
+  color: var(--bg-color);
+  padding: 4rem 10% 2rem;
+  margin-top: 4rem;
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.column {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.column h3, .column h4 {
+  color: var(--accent-light);
+  margin-bottom: 0.5rem;
+}
+
+.column a {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.column a:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+.bottomBar {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}

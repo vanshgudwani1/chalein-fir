@@ -1,0 +1,26 @@
+.canvasContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50; /* Bring in front of UI */
+  pointer-events: none; /* Crucial to allow scrolling and clicking the UI */
+  background: transparent; /* Remove radial gradient from here so it doesn't obscure content */
+}
+
+.backgroundLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at center, rgba(254, 240, 138, 0.2) 0%, rgba(56, 189, 248, 0.1) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .canvasContainer {
+    background: radial-gradient(circle at center, rgba(30, 27, 75, 0.4) 0%, rgba(12, 10, 9, 0.8) 100%);
+  }
+}
