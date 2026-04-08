@@ -94,12 +94,23 @@
   .section, .sectionLeft, .sectionRight {
     flex-direction: column;
     text-align: center;
-    padding: 6rem 5%;
+    padding: 100px 5% 60px; /* More top padding for glass header */
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .heading {
+    margin-top: 1rem;
+  }
+
+  .textContent {
+    max-width: 100%;
+    padding: 0 10px;
   }
 
   .placeholderImage {
-    margin-top: 3rem;
-    width: 300px;
-    height: 300px;
+    margin: 2rem 0;
+    width: 250px;
+    height: 250px;
   }
 }

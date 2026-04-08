@@ -61,19 +61,23 @@ export default function PaperPlane3D() {
     const scrollY = window.scrollY;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+    
+    // Check if mobile (width < 768px)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     const time = state.clock.getElapsedTime();
     const floatY = Math.sin(time * 2) * 0.2;
     const floatX = Math.cos(time * 1.5) * 0.1;
 
-    const targetX = Math.sin(progress * Math.PI * 6) * 5; 
-    const targetY = (Math.cos(progress * Math.PI * 8) * 1.5) + floatY;
-    const targetZ = Math.sin(progress * Math.PI * 4) * 3;
+    // Movement driven by scroll (taller/narrower on mobile)
+    const targetX = Math.sin(progress * Math.PI * 6) * (isMobile ? 1.5 : 5); 
+    const targetY = (Math.cos(progress * Math.PI * 8) * (isMobile ? 1.0 : 1.5)) + floatY;
+    const targetZ = Math.sin(progress * Math.PI * 4) * (isMobile ? 1.0 : 3);
 
-    const deltaX = Math.cos(progress * Math.PI * 6) * 6; 
+    const deltaX = Math.cos(progress * Math.PI * 6) * (isMobile ? 2 : 6); 
     const targetBank = deltaX * -0.4; 
     const targetYaw = deltaX * -0.15;
-    const deltaY = -Math.sin(progress * Math.PI * 8) * 4;
+    const deltaY = -Math.sin(progress * Math.PI * 8) * (isMobile ? 2 : 4);
     const targetPitch = (deltaY * 0.2) + (Math.sin(time * 3) * 0.05);
 
     planeRef.current.position.x = THREE.MathUtils.lerp(planeRef.current.position.x, targetX + floatX, 0.08);
