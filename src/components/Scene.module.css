@@ -16,11 +16,11 @@
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background: radial-gradient(circle at center, rgba(254, 240, 138, 0.2) 0%, rgba(56, 189, 248, 0.1) 100%);
+  background: linear-gradient(135deg, #bae6fd 0%, #e0f2fe 50%, #f0f9ff 100%);
 }
 
 @media (prefers-color-scheme: dark) {
-  .canvasContainer {
-    background: radial-gradient(circle at center, rgba(30, 27, 75, 0.4) 0%, rgba(12, 10, 9, 0.8) 100%);
+  .backgroundLayer {
+    background: radial-gradient(circle at center, #1e1b4b 0%, #0c0a09 100%);
   }
 }

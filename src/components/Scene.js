@@ -10,9 +10,11 @@ export default function Scene() {
       {/* Background Atmosphere Layer (Behind Text) */}
       <div className={styles.backgroundLayer}>
         <Canvas camera={{ position: [0, 2, 15], fov: 45 }}>
-          <fog attach="fog" args={['#bae6fd', 10, 40]} />
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[10, 10, 5]} intensity={1} color="#fef08a" />
+          {/* Much clearer fog - only far distance */}
+          <fog attach="fog" args={['#bae6fd', 25, 60]} />
+          
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[10, 10, 5]} intensity={2.5} color="#ffffff" />
           
           <Sky 
             distance={450000} 
@@ -21,46 +23,50 @@ export default function Scene() {
             azimuth={0.25} 
           />
           
+          {/* Subtle clouds for depth without muddiness */}
           <Cloud 
-            opacity={0.4}
-            speed={0.4} 
-            width={20} 
-            depth={2} 
-            segments={20} 
-            position={[0, -5, -15]}
+            opacity={0.15}
+            speed={0.2} 
+            width={10} 
+            depth={1} 
+            segments={10} 
+            position={[0, -5, -20]}
           />
           
-          {/* Distant floating shapes */}
-          {Array.from({ length: 20 }).map((_, i) => (
-            <Float key={i} speed={1.5} rotationIntensity={1} floatIntensity={2} position={[
-              (Math.random() - 0.5) * 50, 
-              (Math.random() - 0.5) * 50, 
-              (Math.random() - 0.5) * 20 - 20
+          {/* Very sharp distant shapes with higher opacity/vibrancy */}
+          {Array.from({ length: 15 }).map((_, i) => (
+            <Float key={i} speed={1.5} rotationIntensity={1} floatIntensity={1.5} position={[
+              (Math.random() - 0.5) * 40, 
+              (Math.random() - 0.5) * 40, 
+              (Math.random() - 0.5) * 15 - 25
             ]}>
-              <mesh scale={Math.random() * 0.8 + 0.2}>
-                {i % 3 === 0 ? <torusGeometry args={[1, 0.3, 16, 32]} /> : <icosahedronGeometry args={[1, 0]} />}
+              <mesh scale={Math.random() * 0.8 + 0.3}>
+                {i % 3 === 0 ? <torusGeometry args={[1, 0.2, 16, 32]} /> : <icosahedronGeometry args={[1, 0]} />}
                 <meshStandardMaterial 
-                  color={i % 2 === 0 ? "#f472b6" : "#2dd4bf"} 
+                  color={i % 2 === 0 ? "#ec4899" : "#06b6d4"} 
                   transparent 
-                  opacity={0.4} 
+                  opacity={0.6} 
+                  roughness={0}
+                  metalness={0.5}
                 />
               </mesh>
             </Float>
           ))}
-          <Environment preset="dawn" />
+          <Environment preset="city" />
         </Canvas>
       </div>
 
       {/* Foreground Interactive Layer (In Front of Text) */}
       <div className={styles.canvasContainer}>
         <Canvas camera={{ position: [0, 2, 8], fov: 45 }} transparent>
-          <ambientLight intensity={1.2} />
-          <pointLight position={[0, 5, 0]} intensity={2} color="#d946ef" />
+          {/* Brighter foreground lighting */}
+          <ambientLight intensity={1.5} />
+          <pointLight position={[0, 10, 0]} intensity={3} color="#ffffff" />
           
           {/* The Paper Plane with Smoke Trail */}
           <PaperPlane3D />
           
-          <Environment preset="dawn" />
+          <Environment preset="city" />
         </Canvas>
       </div>
     </>

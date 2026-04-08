@@ -4,10 +4,10 @@
   --bg-color: #fafafa;
   --text-primary: #1c1917;
   --text-secondary: #57534e;
-  --accent-color: #d946ef; /* Vibrant magenta/fuchsia */
-  --accent-light: #f43f5e; /* Rose/Pink */
-  --accent-secondary: #f59e0b; /* Amber/Yellow-Orange */
-  --accent-purple: #8b5cf6; /* Violet */
+  --accent-color: #f43f5e; /* Brighter Rose for contrast */
+  --accent-light: #fb7185; 
+  --accent-secondary: #fcd34d; /* Brighter Amber */
+  --accent-purple: #a78bfa; 
   
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -16,12 +16,23 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #0c0a09;
-    --text-primary: #fafaf9;
-    --text-secondary: #a8a29e;
-    --accent-color: #f472b6; /* Lighter pink for dark mode */
-    --accent-light: #fb7185; 
-    --accent-secondary: #fcd34d;
-    --accent-purple: #a78bfa;
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;
+    --accent-color: #ff4d94; 
+    --accent-light: #ff758f; 
+    --accent-secondary: #fbbf24;
+    --accent-purple: #c084fc;
+  }
+}
+
+/* Header Text Contrast Shadow */
+h1, h2, .heading {
+  text-shadow: 0 2px 20px rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  h1, h2, .heading {
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   }
 }
 
